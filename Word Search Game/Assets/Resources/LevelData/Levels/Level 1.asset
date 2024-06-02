@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ef72606f9298643979a58ac54624fb, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  levelCompleteTime: 0
+  rows: 6
+  columns: 6
+  level:
+  - rowSize: 6
+    row:
+    - B
+    - L
+    - P
+    - C
+    - A
+    - T
+  - rowSize: 6
+    row:
+    - A
+    - Q
+    - A
+    - D
+    - U
+    - E
+  - rowSize: 6
+    row:
+    - T
+    - T
+    - T
+    - C
+    - K
+    - R
+  - rowSize: 6
+    row:
+    - T
+    - I
+    - F
+    - A
+    - H
+    - N
+  - rowSize: 6
+    row:
+    - H
+    - M
+    - Q
+    - T
+    - T
+    - A
+  - rowSize: 6
+    row:
+    - C
+    - O
+    - W
+    - X
+    - Y
+    - M
+  SearchableWordList:
+  - word: CAT
+  - word: BAT
+  - word: COW
+  - word: MAN
+  - word: HIT
