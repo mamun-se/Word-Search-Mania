@@ -31,6 +31,7 @@ public class SearchingWord : MonoBehaviour
         if (word == _word)
         {
             crossLine.gameObject.SetActive(true);
+            transform.GetComponent<Image>().color = Color.green;
         }
     }
 }

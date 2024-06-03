@@ -11,7 +11,6 @@ public class GridSquire : MonoBehaviour
     private bool selected;
     private bool clicked;
     private int index = -1;
-    private bool isCorrect;
     private List<int> selectedSquares = new List<int>(); // Use instance variable for selectedSquares
 
     private WordChecker wordChecker;
@@ -21,7 +20,6 @@ public class GridSquire : MonoBehaviour
         displayImage = GetComponent<SpriteRenderer>();
         selected = false;
         clicked = false;
-        isCorrect = false;
         wordChecker = FindObjectOfType<WordChecker>(); // Find the WordChecker instance in the scene
     }
 
@@ -56,22 +54,11 @@ public class GridSquire : MonoBehaviour
     {
         selected = false;
         clicked = false;
-        if (isCorrect)
-        {
-            // Debug.Log("Correct letter data : " + letterData.letter);
-        }
-        else
-        {
-            // Debug.Log("Wrong letter data : " + letterData.letter);
-        }
     }
 
     public void OnSelectSquare(Vector3 position)
     {
-        if (transform.position == position)
-        {
-            // Debug.Log("Selected a letter");
-        }
+        // For Future Implementation
     }
 
     private void OnMouseDown()

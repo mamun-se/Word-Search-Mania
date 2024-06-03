@@ -20,11 +20,6 @@ public class LevelData : ScriptableObject
     {
         public int rowSize;
         public string[] row;
-
-        public LevelRow()
-        {
-            // Empty Contructor
-        }
         public LevelRow(int size)
         {
             CreateRow(size);

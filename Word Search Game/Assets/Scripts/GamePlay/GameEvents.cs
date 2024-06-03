@@ -10,7 +10,7 @@ public static class GameEvents
     {
         if (OnEnableSquareSelection != null) OnEnableSquareSelection();
     }
-
+    //***********************************************************************
 
     public delegate void DisableSquireSelection();
     public static event DisableSquireSelection OnDisableSquareSelection;
@@ -18,6 +18,7 @@ public static class GameEvents
     {
         if (OnDisableSquareSelection != null) OnDisableSquareSelection();
     }
+    //***********************************************************************
 
     public delegate void SelectSquare(Vector3 position);
     public static event SelectSquare OnSelectSquare;
@@ -25,15 +26,15 @@ public static class GameEvents
     {
         if (OnSelectSquare != null) OnSelectSquare(position);
     }
-
+    //***********************************************************************
 
     public delegate void CheckSquare(string letter, Vector3 squarePos, int squareIndex);
     public static event CheckSquare OnCheckSquare;
     public static void CheckSquareMethod(string letter, Vector3 squarePos, int squareIndex)
     {
         if (OnCheckSquare != null) OnCheckSquare(letter, squarePos, squareIndex);
-        //Debug.Log("Selected letter : " + letter);
     }
+    //***********************************************************************
 
     public delegate void ClearSelection();
     public static event ClearSelection OnClearSelection;
@@ -41,7 +42,7 @@ public static class GameEvents
     {
         if (OnClearSelection != null) OnClearSelection();
     }
-
+    //***********************************************************************
 
     public delegate void CorrectWord(string _word, List<int> squareIndexes);
     public static event CorrectWord OnCorrectWord;

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Button reloadSceneButton;
     [SerializeField] private Button quitApplicationButton;
     [SerializeField] private Transform gameWinpanel;
-    [SerializeField] private LineRenderer linePrefab; // Prefab for the line renderer
+    [SerializeField] private LineRenderer linePrefab;
     [SerializeField] private LineRenderer lineRenderer;
 
-    // Start is called before the first frame update
+    private Color currentLineColor;
+
     void Start()
     {
         if (reloadSceneButton != null)
@@ -26,13 +28,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Method to reload the current scene
     private void ReloadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // Method to quit the application
     private void QuitApplication()
     {
         Application.Quit();
@@ -42,7 +42,8 @@ public class GameManager : MonoBehaviour
     {
         if (gameWinpanel != null)
         {
-            gameWinpanel.localScale = Vector3.one;
+
+            gameWinpanel.DOScale(Vector3.one , 0.5f).SetEase(Ease.InBounce);
         }
     }
 
@@ -50,28 +51,32 @@ public class GameManager : MonoBehaviour
     {
         LineRenderer newLine = Instantiate(linePrefab, transform);
         newLine.positionCount = selectedPositions.Count;
-        newLine.startWidth = 0.5f; // Set start width to 1
-        newLine.endWidth = 0.5f; // Set end width to 1
+        newLine.startWidth = 0.5f;
+        newLine.endWidth = 0.5f;
         newLine.useWorldSpace = true;
-        Color randomColor = new Color(Random.value, Random.value, Random.value, 0.75f); // Set alpha to 0.5
-        newLine.startColor = randomColor;
-        newLine.endColor = randomColor;
+        newLine.startColor = currentLineColor;
+        newLine.endColor = currentLineColor;
 
         for (int i = 0; i < selectedPositions.Count; i++)
         {
             newLine.SetPosition(i, selectedPositions[i]);
         }
+
+        // Animate the alpha value to 0.5f using DOTween
+        Color targetColor = new Color(currentLineColor.r, currentLineColor.g, currentLineColor.b, 0.65f);
+        DOTween.To(() => newLine.startColor, x => newLine.startColor = x, targetColor, 0.25f);
+        DOTween.To(() => newLine.endColor, x => newLine.endColor = x, targetColor, 0.25f);
     }
 
     public void UpdateLineRenderer(List<Vector3> selectedPositions)
     {
         lineRenderer.positionCount = selectedPositions.Count;
-        lineRenderer.startWidth = 0.5f; // Set start width to 1
-        lineRenderer.endWidth = 0.5f; // Set end width to 1
-        Color randomColor = Color.white;
-        randomColor.a = 0.75f;
-        lineRenderer.startColor = randomColor;
-        lineRenderer.endColor = randomColor;
+        lineRenderer.startWidth = 0.5f;
+        lineRenderer.endWidth = 0.5f;
+
+        lineRenderer.startColor = currentLineColor;
+        lineRenderer.endColor = currentLineColor;
+
         for (int i = 0; i < selectedPositions.Count; i++)
         {
             lineRenderer.SetPosition(i, selectedPositions[i]);
@@ -81,5 +86,12 @@ public class GameManager : MonoBehaviour
     public void ClearLineRenderer()
     {
         lineRenderer.positionCount = 0;
+    }
+
+    public void StartNewSelection()
+    {
+        // Pick a random color and store it in the class-level variable
+        currentLineColor = new Color(Random.value, Random.value, Random.value, 0.9f);
+        ClearLineRenderer();
     }
 }

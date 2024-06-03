@@ -46,6 +46,7 @@ public class WordChecker : MonoBehaviour
     {
         if (assignedPoints == 0)
         {
+            gameManager.StartNewSelection();
             rayStartPosition = squarePos;
             correctSquareList.Add(squareIndex);
             selectedPositions.Add(squarePos); // Add position to the list
