@@ -17,6 +17,11 @@ public class WordGrid : MonoBehaviour
         SetSquarePositions();
     }
 
+    public List<GameObject> GetSquareList()
+    {
+        return squireList;
+    }
+
     private void CreateGrid()
     {
         Vector3 gridScale = Vector3.one;

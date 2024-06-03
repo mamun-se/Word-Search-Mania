@@ -301,3 +301,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: {fileID: 7610142530893930207}
   crossLine: {fileID: 5445669807784768501}
+  textPrefab: {fileID: 1213594854535560984, guid: 9e643894e04901d40807553914348b17, type: 3}

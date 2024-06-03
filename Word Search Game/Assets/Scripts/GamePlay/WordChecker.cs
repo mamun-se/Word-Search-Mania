@@ -1,7 +1,7 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static GameEvents;
 
@@ -172,5 +172,18 @@ public class WordChecker : MonoBehaviour
         {
             gameManager.ShowGameWinPopUP();   
         }
+    }
+
+    public string FindHintWord()
+    {
+        foreach (var searchingWord in currentgameData.selectedLevelData.SearchableWordList)
+        {
+            if (searchingWord.found == false)
+            {
+                
+                return searchingWord.word;
+            }
+        }
+        return string.Empty;
     }
 }

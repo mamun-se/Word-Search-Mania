@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform gameWinpanel;
     [SerializeField] private LineRenderer linePrefab;
     [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Button hintButton;
 
     private Color currentLineColor;
 
@@ -25,6 +26,11 @@ public class GameManager : MonoBehaviour
         if (quitApplicationButton != null)
         {
             quitApplicationButton.onClick.AddListener(QuitApplication);
+        }
+
+        if (hintButton != null)
+        {
+            hintButton.onClick.AddListener(ShowHint); // Add listener for hint button
         }
     }
 
@@ -93,5 +99,11 @@ public class GameManager : MonoBehaviour
         // Pick a random color and store it in the class-level variable
         currentLineColor = new Color(Random.value, Random.value, Random.value, 0.9f);
         ClearLineRenderer();
+    }
+
+    private void ShowHint()
+    {
+      string hintWord = FindObjectOfType<WordChecker>().FindHintWord();
+      Debug.Log(hintWord);
     }
 }

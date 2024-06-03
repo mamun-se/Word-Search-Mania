@@ -26,7 +26,7 @@ public class SearchingWord : MonoBehaviour
         displayText.text = word;
     }
 
-    private void CorrectWord(string _word , List<int> squareIndexes)
+    private void CorrectWord(string _word, List<int> squareIndexes)
     {
         if (word == _word)
         {
